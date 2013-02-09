@@ -1,0 +1,28 @@
+{% from "macros/_form.html" import render_field %}
+
+{% extends "layouts/base.html" %}
+{% block title %}
+  login
+{% endblock %}
+{% block body %}
+  <div class="form-signin">
+    <form class="form-horizontal" method="POST" >
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>{{ header }}</legend>
+        {% for field in form %}
+          {% if field.type == "SubmitField" %}
+          <div class="control-group">
+            <div class="form-actions">
+              {{ field(class_="btn btn-primary") }}
+              <a href="/login-with-twitter" class="btn btn-primary">Sign-in with Twitter</a>
+            </div>
+          </div>
+          {% else %}
+            {{ render_field(field) }}
+          {% endif %}          
+        {% endfor %}
+    </fieldset>
+</form>
+  </div>
+{% endblock %}

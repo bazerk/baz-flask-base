@@ -1,0 +1,16 @@
+{% from "macros/_form.html" import render_form %}
+
+{% extends "layouts/base.html" %}
+{% block title %}
+  register
+{% endblock %}
+{% block body %}
+  {% if twitter_name %}
+  <div>
+    Your twitter username is available! Finish the registration below to grab it.
+  </div>
+  {% endif %}
+  <div class="form-signin">
+    {{ render_form(page_title, url_for('frontend.register'), form)}}
+  </div>
+{% endblock %}
